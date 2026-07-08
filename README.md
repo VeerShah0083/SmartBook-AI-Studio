@@ -1,4 +1,4 @@
-# 📚 Multi-Agent Textbook Creation System
+# 📚 SmartBook AI Studio - Multi-Agent Textbook Creation System
 
 A production-grade **LangGraph** pipeline that builds complete academic textbooks from a structured questionnaire through to a formatted DOCX or PDF file.
 
@@ -86,7 +86,7 @@ textbook-agent/
 └── README.md           — This file
 ```
 
-## 🔧 Extending the System
+<!-- ## 🔧 Extending the System
 
 | Goal | Where to change |
 |------|----------------|
@@ -104,7 +104,7 @@ textbook-agent/
 3. **`operator.add` Reducer:** Approved chapters append to the master list automatically (`Annotated[List[str], operator.add]`), avoiding custom merge logic.
 4. **Idempotency via `temperature=0`:** Setting `temperature=0` for the questionnaire LLM call ensures the same output across LangGraph re-runs upon interrupts.
 5. **Deduplication:** `targeted_researcher` skips API calls if a cache entry exists for the chapter.
-6. **SQLite Checkpointer:** Leveraging `SqliteSaver` inside `graph.py` to continuously save graph state, allowing pausing and resuming sessions efficiently even after process restarts.
+6. **SQLite Checkpointer:** Leveraging `SqliteSaver` inside `graph.py` to continuously save graph state, allowing pausing and resuming sessions efficiently even after process restarts. -->
 
 ## 📝 Example Session Flow
 

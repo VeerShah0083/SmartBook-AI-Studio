@@ -43,8 +43,37 @@ from langgraph.types import interrupt
 from state import TextbookSystemState
 
 # ─── LLM client ──────────────────────────────────────────────────────────────
-_client = Groq()
-MODEL = "qwen/qwen3-32b"
+import os
+from google import genai
+
+client = genai.Client(
+    api_key=os.environ.get("GEMINI_API_KEY"),
+)
+
+tools = [
+    {
+        'type': 'google_search',
+    },
+]
+
+generation_config = {
+    'temperature': 1,
+    'max_output_tokens': 65536,
+    'top_p': 0.95,
+    'thinking_level': 'medium',
+}
+
+interaction = client.interactions.create(
+    model='models/gemini-3.5-flash',
+    input='',
+    tools=tools,
+    generation_config=generation_config,
+)
+
+print(interaction.steps[-1])
+
+
+
 
 # ─── Generic helpers ─────────────────────────────────────────────────────────
 
@@ -313,7 +342,7 @@ _STYLE_SAMPLE_SYSTEM = """
 You are a textbook author.  For the chapter described, generate TWO contrasting
 3-sentence prose style samples plus two activity module options.
 
-Return JSON with EXACTLY this structure:
+Return JSON with SIMILAR structure AND STYLE:
 {
   "sample_A": {
     "style_label": "<e.g. Narrative / Storytelling>",
