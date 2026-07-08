@@ -1,0 +1,18 @@
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database and Sessions
+state.db
+.current_session
+
+# Outputs and Old Files
+old/
+output/
